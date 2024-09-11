@@ -7,7 +7,7 @@ import {
   Form
 } from "@/components/ui/form";
 import { Button } from "../ui/button";
-import CustomFormField from "../ui/CustomFormField";
+import CustomFormField from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
 import { useState } from "react";
 import { UserFormValidation } from "@/lib/validation";

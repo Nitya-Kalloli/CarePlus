@@ -7,7 +7,7 @@ import {
   Form
 } from "@/components/ui/form";
 import { Button } from "../ui/button";
-import CustomFormField from "../ui/CustomFormField";
+import CustomFormField from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
 import { useState } from "react";
 import { UserFormValidation } from "@/lib/validation";
@@ -73,8 +73,10 @@ const RegisterForm = ({ user }: { user: User }) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="flex-1 space-y-6">
-        <section className="mb-12 space-y-4">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex-1 space-y-12">
+       
+        {/* WELCOME SECTION */}
+        <section className="space-y-4">
           <h1 className="header">Welcome</h1>
           <p className="text-dark-700">Let us know about yourself.</p>
         </section>
@@ -82,46 +84,29 @@ const RegisterForm = ({ user }: { user: User }) => {
           <div className="mb-9 space-y-1">
             <h2 className="sub-header">Personal Information</h2>
           </div>
+          
            {/* NAME */}
 
            <CustomFormField
             fieldType={FormFieldType.INPUT}
             control={form.control}
             name="name"
+            label="name"
+
             // placeholder="John Doe"
             iconSrc="/assets/icons/user.svg"
             iconAlt="user"
-          />
-
-          {/* EMAIL & PHONE */}
-          <div className="flex flex-col gap-6 xl:flex-row">
-            <CustomFormField
-              fieldType={FormFieldType.INPUT}
-              control={form.control}
-              name="email"
-              label="Email address"
-              // placeholder="johndoe@gmail.com"
-              iconSrc="/assets/icons/email.svg"
-              iconAlt="email"
-            />
-
-            <CustomFormField
-              fieldType={FormFieldType.PHONE_INPUT}
-              control={form.control}
-              name="phone"
-              label="Phone Number"
-              placeholder="(555) 123-4567"
-            />
-        </div>
+          />       
         
         {/* BirthDate & Gender */}
         <div className="flex flex-col gap-6 xl:flex-row">
-            <CustomFormField
-              fieldType={FormFieldType.DATE_PICKER}
-              control={form.control}
-              name="birthDate"
-              label="Date of birth"
-            />
+  <CustomFormField
+    fieldType={FormFieldType.DATE_PICKER}
+    control={form.control}
+    name="birthDate"
+    label="Date of birth"
+    placeholder="Select date"
+  />
 
             <CustomFormField
               fieldType={FormFieldType.SKELETON}
@@ -147,7 +132,29 @@ const RegisterForm = ({ user }: { user: User }) => {
                 </FormControl>
               )}
             />
-        </div>
+          </div>
+
+          {/* EMAIL & PHONE */}
+          <div className="flex flex-col gap-6 xl:flex-row">
+            <CustomFormField
+              fieldType={FormFieldType.INPUT}
+              control={form.control}
+              name="email"
+              label="Email address"
+              // placeholder="johndoe@gmail.com"
+              iconSrc="/assets/icons/email.svg"
+              iconAlt="email"
+            />
+
+            <CustomFormField
+              fieldType={FormFieldType.PHONE_INPUT}
+              control={form.control}
+              name="phone"
+              label="Phone Number"
+              placeholder="(555) 123-4567"
+            />
+          </div>
+          
         {/* Address & Occupation */}
         <div className="flex flex-col gap-6 xl:flex-row">
             <CustomFormField
@@ -253,6 +260,8 @@ const RegisterForm = ({ user }: { user: User }) => {
               placeholder="Ibuprofen 200mg, Levothyroxine 50mcg"
             />
           </div>
+
+
            {/* FAMILY MEDICATION & PAST MEDICATIONS */}
            <div className="flex flex-col gap-6 xl:flex-row">
             <CustomFormField
@@ -272,11 +281,14 @@ const RegisterForm = ({ user }: { user: User }) => {
             />
           </div>
         </section>
+
+
         <section className="space-y-6">
           <div className="mb-9 space-y-1">
             <h2 className="sub-header">Identification and Verfication</h2>
           </div>
 
+            {/* Identification Type */}
           <CustomFormField
             fieldType={FormFieldType.SELECT}
             control={form.control}
@@ -291,6 +303,7 @@ const RegisterForm = ({ user }: { user: User }) => {
             ))}
           </CustomFormField>
 
+          {/* Identification Number */}
           <CustomFormField
             fieldType={FormFieldType.INPUT}
             control={form.control}
@@ -299,6 +312,7 @@ const RegisterForm = ({ user }: { user: User }) => {
             placeholder="123456789"
           />
 
+          {/* Scanned Copy of Identification Document */}
           <CustomFormField
             fieldType={FormFieldType.SKELETON}
             control={form.control}
@@ -312,6 +326,7 @@ const RegisterForm = ({ user }: { user: User }) => {
           />
         </section>
 
+        {/* Consent and Privacy */}
         <section className="space-y-6">
           <div className="mb-9 space-y-1">
             <h2 className="sub-header">Consent and Privacy</h2>
@@ -352,4 +367,4 @@ export default RegisterForm;
 /*In essence, the PatientForm component is a modular, scalable form designed to collect user information with validation and state management handled efficiently.
  It sets up a solid foundation for further development, allowing for easy expansion and integration with backend services. */
 
-//1;31
+//2;10
