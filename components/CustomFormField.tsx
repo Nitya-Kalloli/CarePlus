@@ -14,7 +14,7 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 import { Control } from 'react-hook-form';
-import { FormFieldType } from './forms/PatientForm';
+//import { FormFieldType } from './forms/PatientForm';
 import { Checkbox } from "@/components/ui/checkbox";
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -29,15 +29,15 @@ import { Textarea } from "@/components/ui/textarea"
 // ... existing imports ...
 // ... existing imports ...
 // ... existing imports ...
-// export enum FormFieldType {
-//   INPUT = "input",
-//   TEXTAREA = "textarea",
-//   PHONE_INPUT = "phoneInput",
-//   CHECKBOX = "checkbox",
-//   DATE_PICKER = "datePicker",
-//   SELECT = "select",
-//   SKELETON = "skeleton",
-// }
+export enum FormFieldType {
+  INPUT = "input",
+  TEXTAREA = "textarea",
+  PHONE_INPUT = "phoneInput",
+  CHECKBOX = "checkbox",
+  DATE_PICKER = "datePicker",
+  SELECT = "select",
+  SKELETON = "skeleton",
+}
 
 interface CustomProps {
   control: Control<any>;
