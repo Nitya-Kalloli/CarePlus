@@ -50,7 +50,31 @@ export const getUser = async (userId: string) => {
     );
   }
 };
-  // REGISTER PATIENT
+// GET PATIENT
+export const getPatient = async (userId: string) => {
+  try {
+    const patients = await databases.listDocuments(
+      DATABASE_ID!,
+      PATIENT_COLLECTION_ID!,
+      [Query.equal("userId", [userId])]
+    );
+
+    // Check if a patient was found before parsing
+    if (patients.documents.length > 0) {
+      return parseStringify(patients.documents[0]);
+    } else {
+      return null; // or return an appropriate value when no patient is found
+    }
+  } catch (error) {
+    console.error(
+      "An error occurred while retrieving the patient details:",
+      error
+    );
+    return null; // or throw the error if you prefer
+  }
+};
+// REGISTER PATIENT
+
 export const registerPatient = async ({
   identificationDocument,
   ...patient
@@ -89,26 +113,3 @@ export const registerPatient = async ({
   }
 };
 // GET PATIENT
-// GET PATIENT
-export const getPatient = async (userId: string) => {
-  try {
-    const patients = await databases.listDocuments(
-      DATABASE_ID!,
-      PATIENT_COLLECTION_ID!,
-      [Query.equal("userId", [userId])]
-    );
-
-    // Check if a patient was found before parsing
-    if (patients.documents.length > 0) {
-      return parseStringify(patients.documents[0]);
-    } else {
-      return null; // or return an appropriate value when no patient is found
-    }
-  } catch (error) {
-    console.error(
-      "An error occurred while retrieving the patient details:",
-      error
-    );
-    return null; // or throw the error if you prefer
-  }
-};
