@@ -57,6 +57,7 @@ export const AppointmentForm = ({
     values: z.infer<typeof AppointmentFormValidation>
   ) => {
     setIsLoading(true);
+    // console.log(values)
 
     let status;
     switch (type) {
@@ -69,7 +70,7 @@ export const AppointmentForm = ({
       default:
         status = "pending";
     }
-// console.log("Before the type",type)
+
     try {
       if (type === "create" && patientId) {
         const appointment = {
@@ -83,7 +84,7 @@ export const AppointmentForm = ({
         };
 
         const newAppointment = await createAppointment(appointment);
-        console.log(appointment);
+        console.log(newAppointment);
 
         if (newAppointment) {
           form.reset();
@@ -92,6 +93,8 @@ export const AppointmentForm = ({
           );
         }
       } else {
+        console.log("accessing else")
+
         const appointmentToUpdate = {
           userId,
           appointmentId: appointment?.$id!,
