@@ -94,7 +94,9 @@ export const AppointmentForm = ({
         }
       } else {
         console.log("accessing else")
-
+        router.push(
+          `/patients/${userId}/new-appointment/success?`  //fixing this later
+        );
         const appointmentToUpdate = {
           userId,
           appointmentId: appointment?.$id!,
@@ -165,6 +167,7 @@ export const AppointmentForm = ({
                       height={32}
                       alt="doctor"
                       className="rounded-full border border-dark-500"
+                      unoptimized
                     />
                     <p>{doctor.name}</p>
                   </div>
